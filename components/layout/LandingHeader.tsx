@@ -47,7 +47,7 @@ function LandingHeader() {
           <div className='flex items-center gap-3 lg:gap-4'>
             <button
               onClick={() => router.push('signin')}
-              className='bg-primary/80 hover:bg-primary-hover hidden sm:block text-sm lg:text-base font-medium hover:text-foreground px-6 py-2 md:py-2.5  rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20'
+              className='bg-primary/80 hover:bg-primary-hover hidden text-white sm:block text-sm lg:text-base font-medium hover:text-foreground px-6 py-2 md:py-2.5  rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20'
             >
               Login
             </button>
