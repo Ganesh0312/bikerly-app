@@ -1,41 +1,33 @@
 'use client'
-import { KeyIcon } from '@/assets/svgIcons/SvgIcons'
+import { KeyIcon } from '@/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-interface FormState {
-  email: string
-}
-
-interface ValidationErrors {
-  email?: string
-}
-
 function ForgotPasswordPage() {
-  const [formData, setFormData] = useState<FormState>({
+  const [formData, setFormData] = useState({
     email: ''
   })
 
-  const [errors, setErrors] = useState<ValidationErrors>({})
+  const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')
   const [emailSent, setEmailSent] = useState(false)
 
   // Email validation regex
-  const validateEmail = (email: string): boolean => {
+  const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
 
   // Handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
     // Clear error when user starts typing
-    if (errors[name as keyof ValidationErrors]) {
+    if (errors[name]) {
       setErrors(prev => ({
         ...prev,
         [name]: undefined
@@ -44,8 +36,8 @@ function ForgotPasswordPage() {
   }
 
   // Validate form
-  const validateForm = (): boolean => {
-    const newErrors: ValidationErrors = {}
+  const validateForm = () => {
+    const newErrors = {}
 
     // Email validation
     if (!formData.email.trim()) {
@@ -59,7 +51,7 @@ function ForgotPasswordPage() {
   }
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (!validateForm()) {
@@ -152,7 +144,7 @@ function ForgotPasswordPage() {
             </button>
 
             <Link
-              href='/auth/signin'
+              href='/signin'
               className='block text-center mt-4 text-sm text-primary hover:underline transition-colors'
             >
               Back to Login

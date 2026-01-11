@@ -2,26 +2,17 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-type Theme = 'light' | 'dark' | 'system'
+const ThemeContext = createContext(undefined)
 
-interface ThemeContextType {
-  theme: Theme
-  resolvedTheme: 'light' | 'dark'
-  setTheme: (theme: Theme) => void
-  toggleTheme: () => void
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
-
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('system')
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light')
+export function ThemeProvider({ children }) {
+  const [theme, setThemeState] = useState('system')
+  const [resolvedTheme, setResolvedTheme] = useState('light')
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     // Get theme from localStorage or default to system
-    const savedTheme = localStorage.getItem('theme') as Theme | null
+    const savedTheme = localStorage.getItem('theme')
     if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       setThemeState(savedTheme)
     }
@@ -30,7 +21,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!mounted) return
 
-    const getResolvedTheme = (): 'light' | 'dark' => {
+    const getResolvedTheme = () => {
       if (theme === 'system') {
         return window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
@@ -49,7 +40,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Listen for system theme changes if using system theme
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      const handleChange = (e: MediaQueryListEvent) => {
+      const handleChange = (e) => {
         const newTheme = e.matches ? 'dark' : 'light'
         setResolvedTheme(newTheme)
         root.setAttribute('data-theme', newTheme)
@@ -60,7 +51,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme, mounted])
 
-  const setTheme = (newTheme: Theme) => {
+  const setTheme = (newTheme) => {
     setThemeState(newTheme)
     localStorage.setItem('theme', newTheme)
   }
@@ -78,7 +69,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Always provide context, even during SSR
   // Use safe defaults during initial render to prevent hydration issues
-  const contextValue: ThemeContextType = {
+  const contextValue = {
     theme,
     resolvedTheme,
     setTheme,
@@ -99,4 +90,3 @@ export function useTheme() {
   }
   return context
 }
-

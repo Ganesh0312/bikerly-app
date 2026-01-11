@@ -2,10 +2,12 @@
 
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { RidoLogo } from '@/assets/svgIcons/SvgIcons'
+import { RidoLogo } from '@/assets/SVGIcons/SVGIcons'
 import { useRouter } from 'next/navigation'
-function LandingHeader() {
+
+const LandingHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   const navLinks = [
     { label: 'Features', href: '#features' },
@@ -13,7 +15,6 @@ function LandingHeader() {
     { label: 'Pricing', href: '#pricing' },
     { label: 'About', href: '#about' },
   ]
-  const router = useRouter();
 
   return (
     <header className='bg-background/95 backdrop-blur-sm border-b border-border/50 sticky top-0 z-50 transition-colors duration-300'>
@@ -46,14 +47,14 @@ function LandingHeader() {
           {/* Action Buttons */}
           <div className='flex items-center gap-3 lg:gap-4'>
             <button
-              onClick={() => router.push('signin')}
-              className='bg-primary/80 hover:bg-primary-hover hidden text-white sm:block text-sm lg:text-base font-medium hover:text-foreground px-6 py-2 md:py-2.5  rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20'
+              onClick={() => router.push('/signin')}
+              className='bg-transparent hover:bg-background/50 hidden sm:block text-sm lg:text-base font-medium text-foreground hover:text-foreground px-6 py-2 md:py-2.5 rounded-lg transition-all duration-200'
             >
               Login
             </button>
             <button
-              onClick={() => router.push('signup')}
-              className='bg-primary/80 hover:bg-primary-hover text-white font-medium text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-2.5 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20'
+              onClick={() => router.push('/signup')}
+              className='bg-primary hover:bg-primary-hover text-white font-medium text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-2.5 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20'
             >
               Sign Up
             </button>
@@ -107,7 +108,7 @@ function LandingHeader() {
               ))}
               <button
                 onClick={() => {
-                  console.log('Mobile Login clicked')
+                  router.push('/signin')
                   setIsMenuOpen(false)
                 }}
                 className='text-left text-base font-medium text-foreground/80 hover:text-foreground px-2 py-2 transition-colors'

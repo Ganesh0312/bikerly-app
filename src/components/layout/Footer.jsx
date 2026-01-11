@@ -8,9 +8,9 @@ import {
   TwitterIcon,
   InstagramIcon,
   YouTubeIcon,
-} from '@/assets/svgIcons/SvgIcons'
+} from '@/assets/SVGIcons/SVGIcons'
 
-export function Footer() {
+export const Footer = () => {
   const platformLinks = [
     { label: 'Features', href: '#features' },
     { label: 'Pricing', href: '#pricing' },
@@ -112,4 +112,3 @@ export function Footer() {
     </footer>
   )
 }
-

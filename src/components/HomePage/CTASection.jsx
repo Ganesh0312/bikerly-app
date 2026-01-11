@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { BikeIcon } from '@/assets/svgIcons/SvgIcons'
+import { ArrowRightIcon } from '@/assets/SVGIcons/SVGIcons'
 
-export function CTASection() {
+export const CTASection = () => {
   const handleStartTrial = () => {
     console.log('Start Free Trial clicked')
     // Add your navigation logic here
@@ -31,7 +31,7 @@ export function CTASection() {
             className='group bg-primary hover:bg-primary-hover text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/30 flex items-center justify-center gap-2 w-full sm:w-auto'
           >
             <span>Start Your Free Trial</span>
-            <BikeIcon className='w-5 h-5 transition-transform group-hover:translate-x-1' />
+            <ArrowRightIcon className='w-5 h-5 transition-transform group-hover:translate-x-1' />
           </button>
 
           <button
@@ -45,4 +45,3 @@ export function CTASection() {
     </section>
   )
 }
-

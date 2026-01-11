@@ -1,35 +1,22 @@
 'use client'
-import { RidoLogoV2, UploadIcon } from '@/assets/svgIcons/SvgIcons'
+import { RidoLogoV2, UploadIcon } from '@/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-interface FormErrors {
-  userName?: string
-  email?: string
-  password?: string
-}
-
-interface FormData {
-  userName: string
-  email: string
-  password: string
-  profilePicture: string | null
-}
-
 function SignUp() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     userName: '',
     email: '',
     password: '',
     profilePicture: null,
   })
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [successMessage, setSuccessMessage] = useState<string>('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
 
   // Validation functions
-  const validateUsername = (username: string): string => {
+  const validateUsername = (username) => {
     if (!username.trim()) return 'Username is required'
     if (username.length < 3) return 'Username must be at least 3 characters'
     if (username.length > 20) return 'Username must not exceed 20 characters'
@@ -37,14 +24,14 @@ function SignUp() {
     return ''
   }
 
-  const validateEmail = (email: string): string => {
+  const validateEmail = (email) => {
     if (!email.trim()) return 'Email is required'
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) return 'Please enter a valid email address'
     return ''
   }
 
-  const validatePassword = (password: string): string => {
+  const validatePassword = (password) => {
     if (!password) return 'Password is required'
     if (password.length < 8) return 'Password must be at least 8 characters'
     if (password.length > 50) return 'Password must not exceed 50 characters'
@@ -57,14 +44,14 @@ function SignUp() {
   }
 
   // Handle input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
     // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
+    if (errors[name]) {
       setErrors(prev => ({
         ...prev,
         [name]: ''
@@ -73,7 +60,7 @@ function SignUp() {
   }
 
   // Handle profile picture change
-  const handleProfilePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProfilePictureChange = (e) => {
     const file = e.target.files?.[0]
     if (file) {
       // Validate file size (max 5MB)
@@ -91,7 +78,7 @@ function SignUp() {
       reader.onloadend = () => {
         setFormData(prev => ({
           ...prev,
-          profilePicture: reader.result as string
+          profilePicture: reader.result
         }))
         setErrors(prev => ({ ...prev, profilePicture: '' }))
       }
@@ -100,8 +87,8 @@ function SignUp() {
   }
 
   // Validate all fields
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {}
+  const validateForm = () => {
+    const newErrors = {}
 
     const userNameError = validateUsername(formData.userName)
     if (userNameError) newErrors.userName = userNameError
@@ -117,7 +104,7 @@ function SignUp() {
   }
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (!validateForm()) {
@@ -322,7 +309,7 @@ function SignUp() {
               {/* Sign In Link */}
               <span className='text-center text-foreground/70'>
                 Already have an account?{' '}
-                <Link href={'/auth/signin'} className='text-primary font-semibold hover:underline'>
+                <Link href={'/signin'} className='text-primary font-semibold hover:underline'>
                   Sign in
                 </Link>
               </span>

@@ -6,12 +6,12 @@ import { useTheme } from './ThemeProvider'
 export function ThemeToggle() {
   const { theme, resolvedTheme, setTheme, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef(null)
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false)
       }
     }
@@ -137,4 +137,3 @@ export function ThemeToggle() {
     </div>
   )
 }
-
