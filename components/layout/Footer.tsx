@@ -10,22 +10,33 @@ import {
   YouTubeIcon,
 } from '@/assets/SVGIcons/SVGIcons'
 
+interface LinkItem {
+  label: string
+  href: string
+}
+
+interface SocialLink {
+  name: string
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+}
+
 export const Footer = () => {
-  const platformLinks = [
+  const platformLinks: LinkItem[] = [
     { label: 'Features', href: '#features' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Mobile App', href: '#mobile' },
     { label: 'API', href: '#api' },
   ]
 
-  const supportLinks = [
+  const supportLinks: LinkItem[] = [
     { label: 'Help Center', href: '#help' },
     { label: 'Contact Us', href: '#contact' },
     { label: 'Privacy', href: '#privacy' },
     { label: 'Terms', href: '#terms' },
   ]
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     { name: 'Facebook', href: '#', icon: FacebookIcon },
     { name: 'Twitter', href: '#', icon: TwitterIcon },
     { name: 'Instagram', href: '#', icon: InstagramIcon },

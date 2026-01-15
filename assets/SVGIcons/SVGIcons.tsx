@@ -1,6 +1,10 @@
 import React from 'react'
 
-export function RidoLogo({ className = 'w-8 h-8' }) {
+interface SVGIconProps {
+  className?: string
+}
+
+export function RidoLogo({ className = 'w-8 h-8' }: SVGIconProps) {
   return (
     <svg
       className={className}
@@ -16,7 +20,7 @@ export function RidoLogo({ className = 'w-8 h-8' }) {
   )
 }
 
-export function RidoLogoV2({ className = 'w-8 h-8' }) {
+export function RidoLogoV2({ className = 'w-8 h-8' }: SVGIconProps) {
   return (
     <div className="flex justify-center items-center p-2 bg-primary rounded-lg">
       <svg
@@ -35,7 +39,7 @@ export function RidoLogoV2({ className = 'w-8 h-8' }) {
 }
 
 // Bike Icon
-export function BikeIcon({ className = 'w-7 h-7' }) {
+export function BikeIcon({ className = 'w-7 h-7' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
       <path d="M5 20h14v-2H5v2zM19 10c0 1.1-.9 2-2 2h-1v-4h1c1.1 0 2 .9 2 2v2zM5 10v2c0 1.1.9 2 2 2h1v-4H7c-1.1 0-2 .9-2 2z" fill="currentColor" />
@@ -47,7 +51,7 @@ export function BikeIcon({ className = 'w-7 h-7' }) {
 }
 
 // Arrow
-export function ArrowRightIcon({ className = 'w-5 h-5' }) {
+export function ArrowRightIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 20 20" fill="none">
       <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" />
@@ -56,7 +60,7 @@ export function ArrowRightIcon({ className = 'w-5 h-5' }) {
 }
 
 // Play
-export function PlayIcon({ className = 'w-5 h-5' }) {
+export function PlayIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 20 20" fill="none">
       <path d="M6.66667 4.16667L15.8333 10L6.66667 15.8333V4.16667Z" fill="currentColor" />
@@ -65,7 +69,7 @@ export function PlayIcon({ className = 'w-5 h-5' }) {
 }
 
 // Upload
-export function UploadIcon({ className = 'w-5 h-5' }) {
+export function UploadIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 512 512" fill="currentColor">
       <path d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3L150.6 182.7c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3z" />
@@ -73,7 +77,7 @@ export function UploadIcon({ className = 'w-5 h-5' }) {
   )
 }
 
-export function KeyIcon({ className = 'w-5 h-5' }) {
+export function KeyIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 512 512" fill="currentColor">
       <path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0 160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3z" />
@@ -82,7 +86,7 @@ export function KeyIcon({ className = 'w-5 h-5' }) {
 }
 
 // Route/Map Icon for Smart Ride Planning
-export function RouteIcon({ className = 'w-7 h-7' }) {
+export function RouteIcon({ className = 'w-7 h-7' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -101,7 +105,7 @@ export function RouteIcon({ className = 'w-7 h-7' }) {
 }
 
 // Community Icon for Social Groups
-export function CommunityIcon({ className = 'w-7 h-7' }) {
+export function CommunityIcon({ className = 'w-7 h-7' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -113,7 +117,7 @@ export function CommunityIcon({ className = 'w-7 h-7' }) {
 }
 
 // Social Media Icons
-export function FacebookIcon({ className = 'w-5 h-5' }) {
+export function FacebookIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -127,7 +131,7 @@ export function FacebookIcon({ className = 'w-5 h-5' }) {
   )
 }
 
-export function TwitterIcon({ className = 'w-5 h-5' }) {
+export function TwitterIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -141,7 +145,7 @@ export function TwitterIcon({ className = 'w-5 h-5' }) {
   )
 }
 
-export function InstagramIcon({ className = 'w-5 h-5' }) {
+export function InstagramIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" strokeWidth="2" />
@@ -157,7 +161,7 @@ export function InstagramIcon({ className = 'w-5 h-5' }) {
   )
 }
 
-export function YouTubeIcon({ className = 'w-5 h-5' }) {
+export function YouTubeIcon({ className = 'w-5 h-5' }: SVGIconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

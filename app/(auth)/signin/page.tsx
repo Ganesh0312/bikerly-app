@@ -3,7 +3,7 @@ import { RidoLogoV2 } from '@/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React from 'react'
 
-function SignInPage() {
+const SignInPage = () => {
   return (
     <>
       <div className='bg-background flex flex-col items-center justify-center h-screen '>

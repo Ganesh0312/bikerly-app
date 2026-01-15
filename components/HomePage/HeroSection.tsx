@@ -3,19 +3,25 @@
 import React from 'react'
 import { ArrowRightIcon, PlayIcon } from '@/assets/SVGIcons/SVGIcons'
 
-const stats = [
+interface Stat {
+  value: string
+  label: string
+  color: string
+}
+
+const stats: Stat[] = [
   { value: '10K+', label: 'Active Rides', color: 'text-primary' },
   { value: '500K+', label: 'Miles Tracked', color: 'text-secondary' },
   { value: '1K+', label: 'Group Rides', color: 'text-ternary' },
 ]
 
 export const HeroSection = () => {
-  const handleGetStarted = () => {
+  const handleGetStarted = (): void => {
     console.log('Get Started clicked')
     // Add your navigation logic here
   }
 
-  const handleWatchDemo = () => {
+  const handleWatchDemo = (): void => {
     console.log('Watch Demo clicked')
     // Add your video modal logic here
   }

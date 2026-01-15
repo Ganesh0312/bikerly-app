@@ -1,22 +1,36 @@
 'use client'
 import { RidoLogoV2, UploadIcon } from '@/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
 
-function SignUp() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  userName: string
+  email: string
+  password: string
+  profilePicture: string | null
+}
+
+interface FormErrors {
+  userName?: string
+  email?: string
+  password?: string
+  profilePicture?: string
+}
+
+const SignUp = () => {
+  const [formData, setFormData] = useState<FormData>({
     userName: '',
     email: '',
     password: '',
     profilePicture: null,
   })
-  const [showPassword, setShowPassword] = useState(false)
-  const [errors, setErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  const [successMessage, setSuccessMessage] = useState('')
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [successMessage, setSuccessMessage] = useState<string>('')
 
   // Validation functions
-  const validateUsername = (username) => {
+  const validateUsername = (username: string): string => {
     if (!username.trim()) return 'Username is required'
     if (username.length < 3) return 'Username must be at least 3 characters'
     if (username.length > 20) return 'Username must not exceed 20 characters'
@@ -24,14 +38,14 @@ function SignUp() {
     return ''
   }
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string): string => {
     if (!email.trim()) return 'Email is required'
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) return 'Please enter a valid email address'
     return ''
   }
 
-  const validatePassword = (password) => {
+  const validatePassword = (password: string): string => {
     if (!password) return 'Password is required'
     if (password.length < 8) return 'Password must be at least 8 characters'
     if (password.length > 50) return 'Password must not exceed 50 characters'
@@ -44,23 +58,23 @@ function SignUp() {
   }
 
   // Handle input changes
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
     // Clear error when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
-        [name]: ''
+        [name]: undefined
       }))
     }
   }
 
   // Handle profile picture change
-  const handleProfilePictureChange = (e) => {
+  const handleProfilePictureChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0]
     if (file) {
       // Validate file size (max 5MB)
@@ -78,17 +92,17 @@ function SignUp() {
       reader.onloadend = () => {
         setFormData(prev => ({
           ...prev,
-          profilePicture: reader.result
+          profilePicture: reader.result as string
         }))
-        setErrors(prev => ({ ...prev, profilePicture: '' }))
+        setErrors(prev => ({ ...prev, profilePicture: undefined }))
       }
       reader.readAsDataURL(file)
     }
   }
 
   // Validate all fields
-  const validateForm = () => {
-    const newErrors = {}
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {}
 
     const userNameError = validateUsername(formData.userName)
     if (userNameError) newErrors.userName = userNameError
@@ -104,7 +118,7 @@ function SignUp() {
   }
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
 
     if (!validateForm()) {

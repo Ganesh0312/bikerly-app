@@ -1,7 +1,16 @@
 'use client'
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { BikeIcon, RouteIcon, CommunityIcon } from '@/assets/SVGIcons/SVGIcons'
+
+interface FeatureCardProps {
+  icon: ReactNode
+  title: string
+  description: string
+  features: string[]
+  iconBgColor: string
+  checkmarkColor: string
+}
 
 const FeatureCard = ({
   icon,
@@ -10,7 +19,7 @@ const FeatureCard = ({
   features,
   iconBgColor,
   checkmarkColor,
-}) => {
+}: FeatureCardProps) => {
   return (
     <div className='bg-background/50 backdrop-blur-sm border border-border/30 rounded-xl p-6 lg:p-8 hover:border-border/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 group'>
       {/* Icon */}
@@ -45,7 +54,16 @@ const FeatureCard = ({
   )
 }
 
-const features = [
+interface Feature {
+  icon: ReactNode
+  title: string
+  description: string
+  features: string[]
+  iconBgColor: string
+  checkmarkColor: string
+}
+
+const features: Feature[] = [
   {
     icon: <BikeIcon className='w-7 h-7 text-white' />,
     title: 'Bike & Expense Management',

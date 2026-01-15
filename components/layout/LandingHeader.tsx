@@ -6,7 +6,7 @@ import { RidoLogo } from '@/assets/SVGIcons/SVGIcons'
 import { useRouter } from 'next/navigation'
 
 const LandingHeader = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const router = useRouter()
 
   const navLinks = [

@@ -4,12 +4,12 @@ import React from 'react'
 import { ArrowRightIcon } from '@/assets/SVGIcons/SVGIcons'
 
 export const CTASection = () => {
-  const handleStartTrial = () => {
+  const handleStartTrial = (): void => {
     console.log('Start Free Trial clicked')
     // Add your navigation logic here
   }
 
-  const handleLearnMore = () => {
+  const handleLearnMore = (): void => {
     console.log('Learn More clicked')
     // Add your navigation logic here
   }

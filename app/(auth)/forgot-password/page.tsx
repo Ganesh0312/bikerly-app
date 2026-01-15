@@ -1,33 +1,41 @@
 'use client'
 import { KeyIcon } from '@/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
 
-function ForgotPasswordPage() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  email: string
+}
+
+interface FormErrors {
+  email?: string
+}
+
+const ForgotPasswordPage = () => {
+  const [formData, setFormData] = useState<FormData>({
     email: ''
   })
 
-  const [errors, setErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
-  const [successMessage, setSuccessMessage] = useState('')
-  const [emailSent, setEmailSent] = useState(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [successMessage, setSuccessMessage] = useState<string>('')
+  const [emailSent, setEmailSent] = useState<boolean>(false)
 
   // Email validation regex
-  const validateEmail = (email) => {
+  const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
 
   // Handle input change
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
     // Clear error when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
         [name]: undefined
@@ -36,8 +44,8 @@ function ForgotPasswordPage() {
   }
 
   // Validate form
-  const validateForm = () => {
-    const newErrors = {}
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {}
 
     // Email validation
     if (!formData.email.trim()) {
@@ -51,7 +59,7 @@ function ForgotPasswordPage() {
   }
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
 
     if (!validateForm()) {
@@ -81,7 +89,7 @@ function ForgotPasswordPage() {
   }
 
   // Handle back to login
-  const handleBackToLogin = () => {
+  const handleBackToLogin = (): void => {
     setFormData({ email: '' })
     setErrors({})
     setSuccessMessage('')
