@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { RidoLogo } from '@/assets/SVGIcons/SVGIcons'
+import { RidoLogo } from '@/src/assets/SVGIcons/SVGIcons'
 import { useRouter } from 'next/navigation'
 
 const LandingHeader = () => {

@@ -1,5 +1,5 @@
 'use client'
-import { RidoLogoV2, UploadIcon } from '@/assets/SVGIcons/SVGIcons'
+import { RidoLogoV2, UploadIcon } from '@/src/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 

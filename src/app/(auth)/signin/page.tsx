@@ -1,5 +1,5 @@
 'use client'
-import { RidoLogoV2 } from '@/assets/SVGIcons/SVGIcons'
+import { RidoLogoV2 } from '@/src/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React from 'react'
 

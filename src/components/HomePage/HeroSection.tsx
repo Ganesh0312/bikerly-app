@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ArrowRightIcon, PlayIcon } from '@/assets/SVGIcons/SVGIcons'
+import { ArrowRightIcon, PlayIcon } from '@/src/assets/SVGIcons/SVGIcons'
 
 interface Stat {
   value: string

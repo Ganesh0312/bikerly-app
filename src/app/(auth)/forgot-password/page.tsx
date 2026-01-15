@@ -1,5 +1,5 @@
 'use client'
-import { KeyIcon } from '@/assets/SVGIcons/SVGIcons'
+import { KeyIcon } from '@/src/assets/SVGIcons/SVGIcons'
 import Link from 'next/link'
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ArrowRightIcon } from '@/assets/SVGIcons/SVGIcons'
+import { ArrowRightIcon } from '@/src/assets/SVGIcons/SVGIcons'
 
 export const CTASection = () => {
   const handleStartTrial = (): void => {

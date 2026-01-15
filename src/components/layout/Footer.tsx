@@ -8,7 +8,7 @@ import {
   TwitterIcon,
   InstagramIcon,
   YouTubeIcon,
-} from '@/assets/SVGIcons/SVGIcons'
+} from '@/src/assets/SVGIcons/SVGIcons'
 
 interface LinkItem {
   label: string

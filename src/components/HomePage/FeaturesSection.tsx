@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ReactNode } from 'react'
-import { BikeIcon, RouteIcon, CommunityIcon } from '@/assets/SVGIcons/SVGIcons'
+import { BikeIcon, RouteIcon, CommunityIcon } from '@/src/assets/SVGIcons/SVGIcons'
 
 interface FeatureCardProps {
   icon: ReactNode
